@@ -1,10 +1,18 @@
+/**
+ * @author kosman.scott@gmail.com
+ */
+
+// require modules
 var UI = require('ui');
 var ajax = require('ajax');
+var Vector2 = require('vector2');
 
+
+// app setup and display
 var main = new UI.Card({
-    title: 'somafm',
     body: 'Press select to choose a station.',
-    scrollable: true
+    scrollable: true,
+    style: 'small'
 });
 
 var stationsList = new UI.Menu({
@@ -15,9 +23,12 @@ var stationsList = new UI.Menu({
 
 var currentStation = 'null';
 
+
+// bam!
 main.show();
 
-// ajax request magic
+
+// ajax functionality
 
 function getStations() {
     ajax({
@@ -38,20 +49,22 @@ function getStations() {
 function getSong(station) {
     currentStation = station;
     ajax({
-        url: 'http://somafm.prayingmadness.com/proxy.php?url=http%3A%2F%2Fapi.somafm.com%2Fsongs%2F'+station+'.json',
+        url: 'http://api.somascrobbler.com/api/v1/nowplaying/'+station,
         type: 'json'
     },
     function(data) {
-        main.body('title:\n  '+data.contents.songs[0].title+'\nartist:\n  '+data.contents.songs[0].artist+'\n[Shake to update]');
+        main.body('[track]\n  '+data.title+'\n[artist]\n  '+data.artist+'\n\n[Shake to update]');
         main.show();
     },
     function(error) {
         console.log('error getting data');
-        main.body('bah');
+        main.body('Sorry, we\'re having trouble getting data for that station. Try another?');
+        main.show();
     });
 }
 
-// main.body("Press select to browse.\n\nLoading posts...");
+
+// Event handlers
 
 main.on('click','select',function(e) {
     getStations();
@@ -65,5 +78,6 @@ main.on('accelTap', function(e){
 });
 
 stationsList.on('select', function(e) {
+    main.title(e.item.title);
     getSong(e.item.data);
 });
