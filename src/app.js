@@ -7,6 +7,8 @@ var UI = require('ui');
 var ajax = require('ajax');
 var Vector2 = require('vector2');
 
+
+// splash/instructions screen
 var wind = new UI.Window({ fullscreen: true });
 var image = new UI.Image({
   position: new Vector2(0, 0),
@@ -15,6 +17,7 @@ var image = new UI.Image({
 });
 wind.add(image);
 wind.show();
+
 
 // app setup and display
 var main = new UI.Card({
@@ -34,9 +37,7 @@ var stationsList = new UI.Menu({
 var currentStation = 'null';
 
 
-
 // ajax functionality
-
 function getStations() {
     ajax({
         url: 'http://api.somascrobbler.com/api/v1/stations',
@@ -72,7 +73,6 @@ function getSong(station) {
 
 
 // Event handlers
-
 wind.on('click', function() {
     wind.hide();
     main.show();
