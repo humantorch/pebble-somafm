@@ -7,9 +7,19 @@ var UI = require('ui');
 var ajax = require('ajax');
 var Vector2 = require('vector2');
 
+var wind = new UI.Window({ fullscreen: true });
+var image = new UI.Image({
+  position: new Vector2(0, 0),
+  size: new Vector2(144, 168),
+  image: 'images/soma-splash.png'
+});
+wind.add(image);
+wind.show();
 
 // app setup and display
 var main = new UI.Card({
+    title: 'SomaFM',
+    subtitle: 'Now Playing',
     body: 'Press select to choose a station.',
     scrollable: true,
     style: 'small'
@@ -23,9 +33,6 @@ var stationsList = new UI.Menu({
 
 var currentStation = 'null';
 
-
-// bam!
-main.show();
 
 
 // ajax functionality
@@ -65,6 +72,12 @@ function getSong(station) {
 
 
 // Event handlers
+
+wind.on('click', function() {
+    wind.hide();
+    main.show();
+    getStations();
+});
 
 main.on('click','select',function(e) {
     getStations();

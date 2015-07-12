@@ -1,7 +1,7 @@
 {
     "appKeys": {},
     "capabilities": [
-        "configurable"
+        ""
     ],
     "companyName": "Scott Kosman",
     "longName": "SomaFM Now Playing",
@@ -30,14 +30,14 @@
                 "type": "font"
             },
             {
-                "file": "images/soma_logo.png",
-                "name": "IMAGES_SOMA_LOGO_PNG",
+                "file": "images/soma-splash.png",
+                "name": "IMAGES_SOMA_SPLASH_PNG",
                 "type": "png"
             }
         ]
     },
     "sdkVersion": "3",
-    "shortName": "somafm",
+    "shortName": "SomaFM",
     "uuid": "223f9e83-5784-4dc0-9a44-83312bba3d6f",
     "versionCode": 1,
     "versionLabel": "1.0",
