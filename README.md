@@ -1,5 +1,5 @@
 # SomaFM for Pebble
-A fairly simple "Now Playing" app that shows the currently-playing track from any station at [SomaFM](http://somafm.com).
+A fairly simple "Now Playing" app that shows the currently-playing track from any station at [SomaFM](http://somafm.com). Install on your Pebble by going to http://apps.getpebble.com/en_US/application/55a7f76374e429d266000040 or searching for "SomaFM" in the Pebble app store.
 
 <img src="http://i.imgur.com/L62bDcd.jpg" width="300">
 
